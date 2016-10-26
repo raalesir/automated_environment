@@ -9,6 +9,9 @@ class dependencies::params{
       "findspark==1.1.0",
       "py4j==0.10.4",
       "ipython==5.1.0",
+      "sklearn==0.0",
+#      "Cython==0.25",
+ #     "pandas==0.19.0",
   ]
 
   $matplotlib_dependencies =[
@@ -25,9 +28,9 @@ class dependencies::params{
       "python-pip", #there is a bug in the "pip" puppet package provider https://tickets.puppetlabs.com/browse/PUP-3829
     #   FIX: sudo ln -s /usr/bin/pip /usr/bin/pip-python
       #"agg-devel",
-      #"freetype-devel",
+      #"freetype-dev",
       #"libjpeg-turbo-devel",
-      #"libpng-devel",
+      #"libpng-dev",
       #"libjpeg-turbo",
       #"zlib",
       #"libtiff",
@@ -41,6 +44,13 @@ class dependencies::params{
       "scala",
       "zlib1g-dev", #for sframe
       #"ccache", #for sframe
+      "libpng-dev", #matplotlib
+      "libjpeg8-dev", #matplotlib
+      "libfreetype6-dev", #matplotlib
+      'pkg-config', #http://stackoverflow.com/questions/9829175/pip-install-matplotlib-error-with-virtualenv
+      "liblapack-dev", #scipy http://stackoverflow.com/questions/11114225/installing-scipy-and-numpy-using-pip
+       "libblas-dev", #scipy
+       "python-pandas", 
     ]
 
 }

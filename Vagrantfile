@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-     vb.memory = "512"
+     vb.memory = "1024"
    end
   #
   # View the documentation for the provider you are using for more
@@ -69,7 +69,8 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
    config.vm.provision "shell",
-    inline: "sudo apt-get install -y puppet-common"
+    inline: "sudo apt-get install -y puppet-common", 
+    inline: "echo 'PATH=$PATH:/vagrant/spark/bin'>>/home/ubuntu/.profile && source /home/ubuntu/.profile "
    config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "modules"

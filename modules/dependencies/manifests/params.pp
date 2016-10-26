@@ -8,6 +8,7 @@ class dependencies::params{
       "seaborn==0.7.1",
       "findspark==1.1.0",
       "py4j==0.10.4",
+      "ipython==5.1.0",
   ]
 
   $matplotlib_dependencies =[
@@ -38,6 +39,8 @@ class dependencies::params{
       "python-dev", # this is not in the requirements, but it was needed....
       #"$sshfs",
       "scala",
+      "zlib1g-dev", #for sframe
+      #"ccache", #for sframe
     ]
 
 }

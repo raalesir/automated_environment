@@ -34,16 +34,16 @@ This will download the Vagrant box, so you can `vagrant up` and  `vagrant ssh`
 
 2. `git clone git@bitbucket.org:raalesir/combient_task.git`
 That will clone the repo to the specified directory. The repo contains:
-  ```bash
-  alexey@alexey-iMac:~/Projects/combient$ tree -L 3 manifests/ modules/
-  ├── manifests
-  │   └── site.pp
-  ├── modules
-  │   └── dependencies
-  │       └── manifests
-  ├── README.md
-  └── Vagrantfile
-  ```
+    ```bash
+    alexey@alexey-iMac:~/Projects/combient$ tree -L 3 manifests/ modules/
+    ├── manifests
+    │   └── site.pp
+    ├── modules
+    │   └── dependencies
+    │       └── manifests
+    ├── README.md
+    └── Vagrantfile
+    ```
 3. The `Vagrantfile` from the repo should contain the following entries:
   
   ```puppet

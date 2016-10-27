@@ -1,8 +1,7 @@
 class dependencies::params{
  
-  #$spark_deb = "http://www.scala-lang.org/files/archive/scala-2.11.7.deb"
-  $spark_deb = "http://d3kbcqa49mib13.cloudfront.net/spark-2.0.1-bin-hadoop2.7.tgz"
-
+  $spark = "http://d3kbcqa49mib13.cloudfront.net/spark-1.6.1-bin-hadoop2.6.tgz"
+  
   $pip_dependencies  = [
       "SFrame==2.1",
       "seaborn==0.7.1",
@@ -10,8 +9,11 @@ class dependencies::params{
       "py4j==0.10.4",
       "ipython==5.1.0",
       "sklearn==0.0",
+      "jupyter==1.0.0",
 #      "Cython==0.25",
  #     "pandas==0.19.0",
+       "MarkupSafe==0.23",
+#       "pyzmq==16.0.0",
   ]
 
   $matplotlib_dependencies =[
@@ -50,7 +52,10 @@ class dependencies::params{
       'pkg-config', #http://stackoverflow.com/questions/9829175/pip-install-matplotlib-error-with-virtualenv
       "liblapack-dev", #scipy http://stackoverflow.com/questions/11114225/installing-scipy-and-numpy-using-pip
        "libblas-dev", #scipy
-       "python-pandas", 
+       "python-pandas",
+       "libzmq-dev", #jupyter 
+       "libxs-compat-libzmq-dev", #jupyter
+       "python-jsonschema", #jupyter
     ]
 
 }

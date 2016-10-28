@@ -66,7 +66,7 @@ Then in order to launch the VM the following code should be executed:
   b. `vagrant up` and  `vagrant ssh`
 After checking that you can login,  logout from the VM and execute:
 
-2. `git clone git@bitbucket.org:raalesir/combient_task.git`
+2. `git clone git@github.com:combient/Challenge_Alexey_S.git`
 That will clone the repo to the specified directory. The repo contains:
     ```bash
     alexey@alexey-iMac:~/Projects/combient$ tree -L 3 manifests/ modules/
@@ -120,7 +120,7 @@ Luckily, we still can go with the repo you just cloned.
 
 1. `ssh -X -i ACE_Challenge.pem ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`  
 After logging in to `/home/ubuntu`  type:
-2. `git clone git@bitbucket.org:raalesir/combient_task.git`
+2. `git clone git@github.com:combient/Challenge_Alexey_S.git`
 3. `sudo apt-get install  -y puppet-common`
 4. From the same directory:
 `sudo puppet apply --modulepath=/home/ubuntu/modules manifests/site.pp`  

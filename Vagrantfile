@@ -70,7 +70,6 @@ Vagrant.configure(2) do |config|
   # SHELL
    config.vm.provision "shell",
     inline: "sudo apt-get install -y puppet-common", 
-    inline: "echo 'PATH=$PATH:/vagrant/spark/bin'>>/home/ubuntu/.profile && source /home/ubuntu/.profile "
    config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "modules"

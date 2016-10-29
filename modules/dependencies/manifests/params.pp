@@ -15,7 +15,8 @@ class dependencies::params{
        "MarkupSafe==0.23",
 #       "pyzmq==16.0.0",
   ]
-
+  
+  # list of matplotib dependencies. Most of them are satisfied via other packages
   $matplotlib_dependencies =[
       #"distribute==0.6.49",
       #"numpy==1.8.1",
@@ -26,23 +27,12 @@ class dependencies::params{
       #"backports.ssl-match-hostname==3.4.0.2",
     ]
 
+  # dependencies to be installed with apt-get 
   $apt_get_dependencies  = [
+      "wget",
       "python-pip", #there is a bug in the "pip" puppet package provider https://tickets.puppetlabs.com/browse/PUP-3829
     #   FIX: sudo ln -s /usr/bin/pip /usr/bin/pip-python
-      #"agg-devel",
-      #"freetype-dev",
-      #"libjpeg-turbo-devel",
-      #"libpng-dev",
-      #"libjpeg-turbo",
-      #"zlib",
-      #"libtiff",
-      #"freetype",
-      #"lcms2",
-      #"libwebp",
-      #"tcl",
-      #"openjpeg",
       "python-dev", # this is not in the requirements, but it was needed....
-      #"$sshfs",
       "scala",
       "zlib1g-dev", #for sframe
       #"ccache", #for sframe

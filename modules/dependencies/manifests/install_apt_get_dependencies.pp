@@ -1,5 +1,6 @@
 class dependencies::install_apt_get_dependencies inherits dependencies {
 
+  # function for the apt-get install 
   define install_package{
 
     $var = split($name, ':')

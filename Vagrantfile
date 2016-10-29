@@ -69,7 +69,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
    config.vm.provision "shell",
-    inline: "sudo apt-get install -y puppet-common", 
+    inline: "sudo apt-get install -y puppet-common" 
    config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "modules"

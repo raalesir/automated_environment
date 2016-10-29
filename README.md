@@ -55,30 +55,28 @@ The Puppet scripts provided will work with the two following scenarios.
 
 Scenario I. Local workstation as a host machine and VM is a guest.
 ------------------------------------------------------------------
-1. One could use a local workstation with  VirtualBox and Vagrant installed.
-(Vagrant *must* be from vagran t[site](https://www.vagrantup.com/downloads.html), 
-not from the linux distribution repo!)
+One could use a local workstation with  VirtualBox and Vagrant installed.
+(Vagrant *must* be from Vagrant [site](https://www.vagrantup.com/downloads.html), 
+not from the linux distribution repo!) Follow the instructions there.
+This setting was tested with Vagrant 1.8.6 and VirtualBox 5.1.8 on Ubuntu Xenial 
+as host.
+VirtualBox installation instructions [here](https://www.virtualbox.org/wiki/Linux_Downloads).  
 Then in order to launch the VM the following code should be executed:
 
-  a. `vagrant init ubuntu/trusty64`
-      This will download the Vagrant box, so you can 
+1. `git clone git@github.com:combient/Challenge_Alexey_S.git`
+That will clione the repo to the specified directory. The repo contains:
 
-  b. `vagrant up` and  `vagrant ssh`
-After checking that you can login,  logout from the VM and execute:
-
-2. `git clone git@github.com:combient/Challenge_Alexey_S.git`
-That will clone the repo to the specified directory. The repo contains:
-    ```bash
-    alexey@alexey-iMac:~/Projects/combient$ tree -L 3 manifests/ modules/
-    ├── manifests
-    │   └── site.pp
-    ├── modules
-    │   └── dependencies
-    │       └── manifests
-    ├── README.md
-    └── Vagrantfile
-    ```
-3. The `Vagrantfile` from the repo should contain the following entries:
+  ```bash
+  alexey@alexey-iMac:~/Projects/combient$ tree -L 3 manifests/ modules/
+  ├── manifests
+  │   └── site.pp
+  ├── modules
+  │   └── dependencies
+  │       └── manifests
+  ├── README.md
+  └── Vagrantfile
+  ```
+2. The `Vagrantfile` from the repo should contain the following entries:
   
   ```puppet
   Vagrant.configure(2) do |config|
@@ -95,13 +93,37 @@ That will clone the repo to the specified directory. The repo contains:
      end
   end
   ```
-  If the file produced by `vagrant init` will not be overwritten, do it manually.
+3. `vagrant box add  ubuntu/trusty64`  
+This will download the Vagrant box, so you can 
 
-4. `vagrant up --provision`
-  That will provision the VM and install all dependencies according to the
-  instructions.
-5. ....
+4. `vagrant up`
+That will provision the VM and install all dependencies according to  the 
+instructions.
 
+5. After all the provisioning is finished, you can `vagrans ssh`  and
+`$ jupyter notebook`. That would launch the Jupyter. 
+
+6. Make a desision about a firewall on the host machine. 
+Either turn it off, or open ports at least 8887. The 8888 inside the VM should
+be open hopefully by default. 
+
+6. On the host machine open another terminal tab, go to the `Vagrantfile`
+   directory  and issue:  
+`ssh -i .vagrant/machines/default/virtualbox/private_key  -N -f -L
+localhost:8887:localhost:8888 -p 2200 vagrant@localhost`, where:   
+  * `.vagrant/machines/default/virtualbox/private_key` is the SSH key created
+by Vagrant,
+  * `-p 2200` the port to ssh to the VM (it could be 2222, depending on
+your situation)
+  * 8888 and 8887 ports to launch Jupyter inside the VM and on the host machine
+correspondingly
+
+7. Launch Web browser on the host machine and point it to `http://localhost:8887`
+
+8. You should find yourself in the Jupyter GUI, so you can start  start uploading 
+the Notebook and source files. 
+
+ 
 I have used this approach until I reached line 4 or 5 in the Notebook. After
 that memory demands started to be too severe for my workstation. Use this
 approach only if you have 8-16 GB RAM.

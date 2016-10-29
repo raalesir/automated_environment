@@ -85,11 +85,11 @@ That will clione the repo to the specified directory. The repo contains:
 3. `vagrant box add  ubuntu/trusty64`  
 This will download the Vagrant box, so you can 
 
-4. `vagrant up`
+4. `vagrant up`  
 That will provision the VM and install all dependencies according to  the 
 instructions.
 
-5. After all the provisioning is finished, you can `vagrans ssh`  and
+5. After all the provisioning is finished, you can `vagrant ssh`  and
 `$ jupyter notebook`. That would launch the Jupyter. 
 
 6. Make a desision about a firewall on the host machine. 
@@ -159,7 +159,7 @@ from which you `ssh`'d to EC2.
 
 It is more convenient, however, to utilize `Jupyter` notebook. If the `jupyter`
 installation went well, we can try launch the notebook from the *same*
-directory, where the task notebook () is located:
+directory, where the task notebook is located:
 
 5. `ubuntu@ip-172-31-20-22:~$ jupyter notebook`  
 That should bring you to some ASCII GUI.
@@ -196,13 +196,17 @@ As soon as the infrastructure is ready, you should do the following:
 1. Ask how to access the machine with the installed infrastructure i.e.
    something like:  
  `ssh -X -i ACE_Challenge.pem
-ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`
+ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com` or `vagrant ssh`
+depending on the setup.
 2. After login start the `Jupyter`:  
 `ubuntu@ip-172-31-20-22:~$ jupyter notebook`  
 That should bring you to some ASCII GUI. Just look at it.
 3. From the another terminal tab on the local machine execute: 
 `ssh -i ACE_Challenge.pem -N -f -L localhost:8887:localhost:8888
-ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`
+ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`  
+or something like:  
+`ssh -i .vagrant/machines/default/virtualbox/private_key -N -f -L
+localhost:8887:localhost:8888 -p 2200 vagrant@localhost` depending on the setup
 4. Start up your local Web Browser and point it to:  
 `http://localhost:8887/tree#notebooks`
 5. The notebook has an intuitive GUI on how to create/modify files and

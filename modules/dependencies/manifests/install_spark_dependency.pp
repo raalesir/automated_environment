@@ -4,6 +4,7 @@ class dependencies::install_spark_dependency inherits dependencies {
   exec { 'get_spark':
     cwd => '/home/ubuntu',
     creates => '/home/ubuntu/spark.tgz',
+    timeout  => 1800,
     command  => "/usr/bin/wget $spark -O spark.tgz && /bin/tar -xf spark.tgz -C /home/ubuntu/spark --strip-components=1",
   }
 

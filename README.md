@@ -6,17 +6,6 @@ the Notebook could be executed.
 
 The setup should be as automatic as possible.
 
-The solution  to  the task could be split in two parts:
-
-1. create a minimal environment to be able to copy-paste commands from the
-Notebook into the command prompt and execute the code line  by line locally on
-the machine (local host or EC2 node) where the code will be running
-2. add IPython (Jupyter) notebook in order to be able to steer calculations on 
-EC2 node remotely.
-
-
-Such a separation makes sence since the first point is also provides a user with
-still operable infrastructure in the case more complicated setup is too demanding.
 
 It was possible to establish the infrastrucure to execute the whole notebook
 provided, except the following:
@@ -34,10 +23,10 @@ That, however, does not influence on the results. For the reason see
 
 It was chosen to use Puppet as the solution to provision OS with the packages
 needed. 
-The task was solved in two appoaches:
-- for running calculations on the local machine with additional packages
+The task was solved using two appoaches:
+- running calculations on the local machine with additional packages
   VirtualBox and Vagrant
-- for utilizing the Cloud resources
+- utilizing the Cloud resources
 
 In the case of greater time slot for the task, I could imagine to write Puppet
 code more carefully, making it more versatile, including different Linux

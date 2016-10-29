@@ -52,7 +52,7 @@ as host.
 VirtualBox installation instructions [here](https://www.virtualbox.org/wiki/Linux_Downloads).  
 Then in order to launch the VM the following code should be executed:
 
-1. `git clone git@github.com:combient/Challenge_Alexey_S.git`
+1. `git clone https://github.com/combient/Challenge_Alexey_S.git`
 That will clione the repo to the specified directory. The repo contains:
 
   ```bash
@@ -131,7 +131,7 @@ Luckily, we still can go with the repo you just cloned.
 
 1. `ssh -X -i ACE_Challenge.pem ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`  
 After logging in to `/home/ubuntu`  type:
-2. `git clone git@github.com:combient/Challenge_Alexey_S.git`
+2. `git clone https://github.com/combient/Challenge_Alexey_S.git`
 3. `sudo apt-get install  -y puppet-common`
 4. From the same directory:
 `sudo puppet apply --modulepath=/home/ubuntu/modules manifests/site.pp`  

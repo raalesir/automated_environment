@@ -9,7 +9,7 @@ class dependencies () inherits dependencies::params {
   # creating SPARK_HOME. Needed for Jupyter
   file { '/etc/profile.d/append_spark_home.sh':
     mode    => '644',
-    content => 'SPARK_HOME=/home/ubuntu/spark',
+    content => 'export SPARK_HOME=/home/ubuntu/spark',
     before => Exec["source_etc_profile"]
   }
   # source the file to make variables above active

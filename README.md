@@ -131,36 +131,34 @@ Luckily, we still can go with the repo you just cloned.
 
 1. `ssh -X -i ACE_Challenge.pem ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`  
 After logging in to `/home/ubuntu`  type:
-2. `git clone https://github.com/combient/Challenge_Alexey_S.git`
+2. `sudo apt-get install -y git && git clone https://github.com/combient/Challenge_Alexey_S.git`  
+(That asks for a username and password. I guess that is because the repo is private...)
 3. `sudo apt-get install  -y puppet-common`
-4. From the same directory:
-`sudo puppet apply --modulepath=/home/ubuntu/modules manifests/site.pp`  
+4. `cd Challenge_Alexey_S && sudo puppet apply --modulepath=/home/ubuntu/Challenge_Alexey_S/modules manifests/site.pp`  
 This will tell Puppet to  apply the rules from its scripts onto the *current* machine, 
 i.e. onto the EC2 node. 
-#5. Copy the source files to the `$HOME`:  
-#`scp  test.csv.gz train.csv.gz -i ACE_Challenge.pem
-#ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com:/home/ubuntu`
+5. Copy the source files and the test notebook to the `$HOME/Challenge_Alexey_S`:  
+`scp  test.csv.gz train.csv.gz -i ACE_Challenge.pem ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com:/home/ubuntu/Challenge_Alexey_S` or use Jupyter notebook GUI later.
 6. Make a desision about a firewall. Either turn it off, or open ports at least 8888. 
+7. If `$ env|grep SPARK_HOME` is not set, logout from the VM and repeat step 1:
+`exit` and  `ssh -X -i ACE_Challenge.pem ubuntu@ec2-52-212-62-56.eu-west-1.compute.amazonaws.com`  
+or execute `source /bin/profile` inside the VM.
+
 
 After the installation will finish up (hopefully successfully), one could start
-to play with the `pyspark`.
-
-`ubuntu@ip-172-31-20-22:~$ pyspark`
-
+to play with the `pyspark`.  
+`ubuntu@ip-172-31-20-22:~$ pyspark`  
 At this stage, one could feed  the input lines from the Notebook, like 
 ```
 >>>import sframe
 >>>sf_train = sframe.SFrame.read_csv('/home/ubuntu/train.csv.gz',nrows_to_infer=80000)
 ```
-and so on... 
-
+and so on...  
 The `-X` flag with `ssh` will allow to display pictures on the local machine
-from which you `ssh`'d to EC2.
-
+from which you `ssh`'d to EC2.  
 It is more convenient, however, to utilize `Jupyter` notebook. If the `jupyter`
-installation went well, we can try launch the notebook from the *same*
-directory, where the task notebook is located:
-
+installation went well, we can try launch the notebook:
+ 
 5. `ubuntu@ip-172-31-20-22:~$ jupyter notebook`  
 That should bring you to some ASCII GUI.
 3. make sure that the port 8887 is not listening i.e.: `$ lsof -i :8887`. Otherwise
@@ -176,7 +174,7 @@ That should bring you to some ASCII GUI.
 7. Now we can open the brower on the localhost and enter: `localhost:8887`. That
    should bring us to the `http://localhost:8887/tree#notebooks`.
 
-8. Upload a notebook is nesessary or create one if needed. Try to upload/delete
+8. Upload a notebook if nesessary or create one if needed. Upload/delete data
    files with the GUI etc.
 
 

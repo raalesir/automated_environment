@@ -1,24 +1,11 @@
-Combient Challenge Task
-========================
+Automated Environment for Machine Learning with Python
+======================================================
 
-The task was to create and deploy a Virtual Environment where instructions from
-the Notebook could be executed.
+The project is to create and deploy a Virtual Environment, which can be used for 
+the machine learning with Python and Scala. The coding is done in the Jupyter
+Notebook locally.
 
 The setup should be as automatic as possible.
-
-
-It was possible to establish the infrastrucure to execute the whole notebook
-provided, except the following:
-
-```python
-print "Number of columns with corr > 0.14: %d" %varnames_extreme_corr.size
-print "Number of columns with corr > 0.05: %d" %varnames_strong_corr.size
-print "Number of columns with corr > 0.02: %s" %varnames_medium_corr.size
-
-AttributeError: 'DataFrame' object has no attribute 'size'
-```
-That, however, does not influence on the results. For the reason see 
-[here](https://github.com/pandas-dev/pandas/issues/8846).
 
 
 It was chosen to use Puppet as the solution to provision OS with the packages

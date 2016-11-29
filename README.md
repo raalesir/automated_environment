@@ -1,24 +1,26 @@
-Automated Environment for Machine Learning with Python
-======================================================
+Automated Environment for Machine Learning with Python and Scala
+================================================================
 
 The project is to create and deploy a Virtual Environment, which can be used for 
-the machine learning with Python and Scala. The coding is done in the Jupyter
-Notebook locally.
+the machine learning with Python and Scala. The coding is done in the 
+[Jupyter](http://jupyter.org/) Notebook locally.
 
-The setup should be as automatic as possible.
+The setup is intended to be as automatic as possible.
 
 
-It was chosen to use Puppet as the solution to provision OS with the packages
-needed. 
+To provision the Virtual Machine(VM) with the packages for the machine learning task
+the Pupper was chosen.
+
 The task was solved using two appoaches:
-- running calculations on the local machine with additional packages
-  VirtualBox and Vagrant
+- running calculations on the local machine with additional packages VirtualBox
+  and Vagrant
 - utilizing the Cloud resources
 
 In the case of greater time slot for the task, I could imagine to write Puppet
 code more carefully, making it more versatile, including different Linux
 distributions. Currently it works on Ubuntu/Trusty64.
-
+Another option to add is to create a mirrow for the packages and setup a proxy
+server if there is a risk for the public repositories are being unavailable.
 
 
 
@@ -39,8 +41,8 @@ as host.
 VirtualBox installation instructions [here](https://www.virtualbox.org/wiki/Linux_Downloads).  
 Then in order to launch the VM the following code should be executed:
 
-1. `git clone https://github.com/combient/Challenge_Alexey_S.git`
-That will clione the repo to the specified directory. The repo contains:
+1. `git clone https://github.com/raalesir/automated_environment.git`
+That will clone the repo to the specified directory. The repo contains:
 
   ```bash
   alexey@alexey-iMac:~/Projects/combient$ tree -L 3 manifests/ modules/
@@ -132,7 +134,7 @@ i.e. onto the EC2 node.
 or execute `source /bin/profile` inside the VM.
 
 
-After the installation will finish up (hopefully successfully), one could start
+<!-- After the installation will finish up (hopefully successfully), one could start
 to play with the `pyspark`.  
 `ubuntu@ip-172-31-20-22:~$ pyspark`  
 At this stage, one could feed  the input lines from the Notebook, like 
@@ -143,7 +145,8 @@ At this stage, one could feed  the input lines from the Notebook, like
 and so on...  
 The `-X` flag with `ssh` will allow to display pictures on the local machine
 from which you `ssh`'d to EC2.  
-It is more convenient, however, to utilize `Jupyter` notebook. If the `jupyter`
+It is more convenient, however, to utilize `Jupyter` notebook. -->
+If the `jupyter`
 installation went well, we can try launch the notebook:
  
 5. `ubuntu@ip-172-31-20-22:~$ jupyter notebook`  
